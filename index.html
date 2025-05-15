@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbaka Brenda - Front-End & Security Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2a2d34;
+            --secondary: #009fb7;
+            --accent: #ff6b6b;
+            --light: #f9f9f9;
+            --dark: #1d1e22;
+            --success: #4caf50;
+            --terminal-bg: #0d1117;
+            --terminal-text: #58a6ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary);
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+            font-weight: bold;
+        }
+        
+        .btn-outline {
+     
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 100px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            flex: 1 1 400px;
+            max-width: 500px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .skill-category ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+        
+        .skill-category li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, en, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background-color: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fe-tag {
+            background-color: #e1f5fe;
+            color: #0288d1;
+        }
+        
+        .sec-tag {
+            background-color: #ffebee;
+            color: #e53935;
+        }
+        
+        .terminal {
+            background-color: var(--terminal-bg);
+            color: var(--terminal-text);
+            border-radius: 5px;
+            padding: 1rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .term-red {
+            background-color: #ff5f56;
+        }
+        
+        .term-yellow {
+            background-color: #ffbd2e;
+        }
+        
+        .term-green {
+            background-color: #27c93f;
+        }
+        
+        .terminal-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .terminal-content {
+            line-height: 1.4;
+        }
+        
+        .terminal-content .prompt {
+            color: #8bc34a;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        .about-text {
+            flex: 2 1 500px;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-form {
+            flex: 2 1 500px;
+        }
+        
+        .contact-info {
+            flex: 1 1 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info-item i {
+            background-color: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .skill-category {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem;">Mbaka Brenda</a>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hero" id="home">
+            <div class="hero-content">
+                <h1>Mbaka Brenda</h1>
+                <p>Front-End Developer & Cybersecurity Specialist</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section id="skills">
+        <div class="section-title">
+            <h2>My Skills</h2>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Front-End Development</h3>
+                <p>Creating responsive, interactive, and visually appealing user interfaces is my passion. I focus on performance and accessibility to deliver exceptional user experiences.</p>
+                <ul>
+                    <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                    <li>React.js, Vue.js, Angular</li>
+                    <li>Responsive Design & CSS Frameworks</li>
+                    <li>UI/UX Design Principles</li>
+                    <li>Performance Optimization</li>
+                    <li>Accessibility Compliance (WCAG)</li>
+                    <li>State Management (Redux, Vuex)</li>
+                    <li>Build Tools (Webpack, Vite)</li>
+                </ul>
+                
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-btn term-red"></div>
+                        <div class="terminal-btn term-yellow"></div>
+                        <div class="terminal-btn term-green"></div>
+                        <div class="terminal-title">front-end.js</div>
+                    </div>
+                    <div class="terminal-content">
+                        <span class="prompt">$</span> npm create vite@latest my-app -- --template react<br>
+                        <span style="color: #4caf50;">✓</span> Project created successfully!<br>
+                        <span class="prompt">$</span> cd my-app && npm install<br>
+                        <span class="prompt">$</span> npm run dev<br>
+                        <span style="color: #4caf50;">➜</span> Local: http://localhost:5173/
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Cybersecurity & Penetration Testing</h3>
+                <p>I identify vulnerabilities and security flaws in web applications, providing comprehensive solutions to strengthen security posture.</p>
+                <ul>
+                    <li>Web Application Security Testing</li>
+                    <li>OWASP Top 10 Vulnerability Analysis</li>
+                    <li>Network Security Assessment</li>
+                    <li>Secure Coding Practices</li>
+                    <li>Security Tools (Burp Suite, Metasploit)</li>
+                    <li>XSS, CSRF, SQL Injection Analysis</li>
+                    <li>API Security Testing</li>
+                    <li>Security Report Documentation</li>
+                </ul>
+                
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-btn term-red"></div>
+                        <div class="terminal-btn term-yellow"></div>
+                        <div class="terminal-btn term-green"></div>
+                        <div class="terminal-title">security-scan.sh</div>
+                    </div>
+                    <div class="terminal-content">
+                        <span class="prompt">$</span> nmap -sV -sC -A target.com<br>
+                        <span style="color: #ff6b6b;">[ ! ]</span> Open ports: 80, 443, 22<br>
+                        <span class="prompt">$</span> nikto -h https://target.com<br>
+                        <span style="color: #ff6b6b;">[ ! ]</span> Found: XSS vulnerability in search function<br>
+                        <span style="color: #ff6b6b;">[ ! ]</span> Found: Outdated SSL configuration
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" style="background-color: #f5f5f5;">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img" style="background-color: #3498db;">
+                    <div>Baby-sitting Platform</div>
+                </div>
+                <div class="project-content">
+                    <h3>Secure Baby-sitting Platform</h3>
+                    <p>A fully responsive baby-sitting platform with secure payment processing and robust authentication.</p>
+                    <div class="project-tags">
+                        <span class="tag fe-tag">React.js</span>
+                        <span class="tag fe-tag">Redux</span>
+                        <span class="tag sec-tag">OAuth 2.0</span>
+                        <span class="tag sec-tag">PCI Compliance</span>
+                    </div>
+                    <a href="#" class="btn" style="font-size: 0.9rem;">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img" style="background-color: #e74c3c;">
+                    <div>Security Dashboard</div>
+                </div>
+                <div class="project-content">
+                    <h3>Real-time Security Dashboard</h3>
+                    <p>Interactive dashboard to monitor security threats and vulnerabilities across web applications.</p>
+                    <div class="project-tags">
+                        <span class="tag fe-tag">Vue.js</span>
+                        <span class="tag fe-tag">D3.js</span>
+                        <span class="tag sec-tag">WebSockets</span>
+                        <span class="tag sec-tag">Log Analysis</span>
+                    </div>
+                    <a href="#" class="btn" style="font-size: 0.9rem;">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img" style="background-color: #27ae60;">
+                    <div>Vulnerability Scanner</div>
+                </div>
+                <div class="project-content">
+                    <h3>Web App Vulnerability Scanner</h3>
+                    <p>Automated tool to identify common web vulnerabilities with detailed reporting functionality.</p>
+                    <div class="project-tags">
+                        <span class="tag fe-tag">JavaScript</span>
+                        <span class="tag fe-tag">Electron</span>
+                        <span class="tag sec-tag">OWASP Top 10</span>
+                        <span class="tag sec-tag">Penetration Testing</span>
+                    </div>
+                    <a href="#" class="btn" style="font-size: 0.9rem;">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img" style="background-color: #9b59b6;">
+                    <div>Portfolio Theme</div>
+                </div>
+                <div class="project-content">
+                    <h3>Secure Portfolio Template</h3>
+                    <p>A customizable portfolio template with advanced security features and performance optimization.</p>
+                    <div class="project-tags">
+                        <span class="tag fe-tag">HTML5/CSS3</span>
+                        <span class="tag fe-tag">GSAP Animations</span>
+                        <span class="tag sec-tag">CSP Implementation</span>
+                        <span class="tag sec-tag">XSS Protection</span>
+                    </div>
+                    <a href="#" class="btn" style="font-size: 0.9rem;">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <img src="pfp.jpeg" alt="Professional headshot placeholder">
+            </div>
+            <div class="about-text">
+                <p>I'm a front-end developer and cybersecurity specialist with over 1 year of experience building secure, responsive, and user-friendly web applications. My unique blend of creative development skills and security expertise allows me to build beautiful interfaces that are also resilient against modern cyber threats.</p>
+                
+                <p>My journey began in web development, creating interactive user experiences and responsive designs. As I deepened my technical knowledge, I became fascinated with web application security and began specializing in penetration testing to identify and remediate vulnerabilities in web applications.</p>
+                
+                <p>I believe security should be integrated from the ground up in the development process, not added as an afterthought. This philosophy drives my approach to every project I undertake.</p>
+                
+                <p>When I'm not coding or hunting for vulnerabilities, you can find me contributing to open-source security projects, attending cybersecurity conferences, or mentoring aspiring developers on secure coding practices.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="MBAKA BRENDA ESTHER CV.pdf" class="btn">Download Resume</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" style="background-color: #f5f5f5;">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <h3 style="margin-bottom: 2rem; color: var(--secondary);">Contact Information</h3>
+                
+                <div class="contact-info-item">
+                    <i>📧</i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>contact@brendaesther4320@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i>📱</i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+254743609025</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i>📍</i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Kisumu, Kenya</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i>⏰</i>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Monday - Friday: 9AM - 5PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div>
+            <p>&copy; 2025 Mbaka Brenda. All Rights Reserved.</p>
+            
+            <div class="social-links">
+                <a href="www.linkedin.com/in/brenda-mbaka-437502285" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                    <a href="https://x.com/bremy1t?s=21" target="_blank" class="social-link" title="Twitter/X">
+                        <i class="fab fa-twitter"></i>
+                        <a href="https://github.com/Gits6" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                            <a href="https://www.instagram.com/dull.fairies/profilecard" target="_blank" class="social-link" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+            </div>
+            
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Front-End Developer & Cybersecurity Specialist</p>
+        </div>
+    </footer>
+</body>
+</html>
